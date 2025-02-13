@@ -37,13 +37,16 @@
     <h1>사진 아카이브</h1>
     <a href="index.html">🏠 홈으로</a>
 
-    <div class="image-gallery">
-        <!-- 미리보기 이미지들 -->
-        <img src="images/성훈이피부.jpg" alt="성훈이피부" onclick="showImage('images/성훈이피부.jpg')">
+   <div class="image-gallery">
+        <!-- 첫 번째 이미지 미리보기 -->
+        <img src="images/성훈이피부.jpg" alt="성훈이피부" onclick="showImage('images/성훈이피부.jpg', '오늘은 성훈이랑 같이 공원에서 산책했어요. 날씨가 좋고 기분도 상쾌했죠!')">
+        <!-- 두 번째 이미지 미리보기 -->
+        <img src="images/정원이피부.jpg" alt="정원이피부" onclick="showImage('images/성후니.jpg', '정원이는 처음으로 바다를 보았어요! 너무 신기하고 기뻐했답니다.')">
     </div>
 
     <div id="image-container">
         <img id="full-image" src="" alt="확대된 사진">
+        <p id="image-description"></p> <!-- 설명을 보여줄 부분 -->
     </div>
 
     <script>
