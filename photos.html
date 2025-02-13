@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>사진 아카이브</title>
     <style>
-        body {
+       body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
@@ -31,6 +31,21 @@
             width: 100%;
             max-width: 500px;
         }
+        #image-description {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #555;
+        }
+        .related-images {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .related-images img {
+            width: 80px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -44,17 +59,43 @@
         <img src="images/성후니.jpg" alt="성후니" onclick="showImage('images/성후니.jpg', '정원이는 처음으로 바다를 보았어요! 너무 신기하고 기뻐했답니다.')">
         <!-- 세 번째 이미지 미리보기 -->
         <img src="images/이구아나언니.jpg" alt="이구아나언니" onclick="showImage('images/이구아나언니.jpg', '마땅이들이 좋아하는 사진이에요. - 수연')">
+        <!-- 네 번째 이미지 미리보기 (서영) -->
+        <img src="images/서영줌공11.jpg" alt="서영줌공11" onclick="showImage('서영줌공11', '이구아나 언니와 함께 바닷가를 걷고 있었어요. 바람이 시원했답니다!', true)">
     </div>
 
-    <div id="image-container">
+      <div id="image-container">
         <img id="full-image" src="" alt="확대된 사진">
         <p id="image-description"></p> <!-- 설명을 보여줄 부분 -->
+        
+        <div class="related-images" id="related-images">
+            <!-- 관련 이미지들 -->
+        </div>
     </div>
 <script>
-        function showImage(imageSrc, description) {
+      function showImage(imageName, description, showRelated=false) {
+            // 메인 이미지 변경
+            let imageSrc = "images/" + imageName + ".jpg";
             document.getElementById('full-image').src = imageSrc;
             document.getElementById('image-description').innerText = description;
-            document.getElementById('image-container').style.display = 'block'; // 이 부분이 제대로 작동해야 해
+
+            // 관련 이미지 갤러리 표시 여부 결정
+            let relatedImagesHTML = "";
+            if (showRelated) {
+                // 이구아나 언니 사진 클릭 시에만 관련 이미지들 보여주기
+                relatedImagesHTML = `
+                    <img src="images/서영줌공11.jpg" alt="서영줌공11" onclick="showImage('서영줌공11', '이구아나 언니와 함께 바닷가를 걷고 있었어요. 바람이 시원했답니다!', true)">
+                    <img src="images/서영줌공22.jpg" alt="서영줌공22" onclick="showImage('서영줌공22', '이구아나 동생은 처음으로 물에 발을 담갔어요. 너무 재밌어했죠!', false)">
+                `;
+            } else {
+                // 관련 이미지를 빈 상태로 두기
+                relatedImagesHTML = "";
+            }
+
+            // 관련 이미지들을 화면에 표시
+            document.getElementById('related-images').innerHTML = relatedImagesHTML;
+
+            // 사진과 설명을 표시
+            document.getElementById('image-container').style.display = 'block';
         }
     </script>
 </body>
