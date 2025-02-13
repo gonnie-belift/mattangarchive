@@ -48,11 +48,11 @@
         <img id="full-image" src="" alt="확대된 사진">
         <p id="image-description"></p> <!-- 설명을 보여줄 부분 -->
     </div>
-
-    <script>
-        function showImage(imageSrc) {
+<script>
+        function showImage(imageSrc, description) {
             document.getElementById('full-image').src = imageSrc;
-            document.getElementById('image-container').style.display = 'block';
+            document.getElementById('image-description').innerText = description;
+            document.getElementById('image-container').style.display = 'block'; // 이 부분이 제대로 작동해야 해
         }
     </script>
 </body>
