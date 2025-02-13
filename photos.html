@@ -10,12 +10,47 @@
             text-align: center;
             padding: 50px;
         }
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 가로 2개씩 */
+            gap: 20px;
+            justify-items: center;
+            margin-top: 20px;
+        }
+        .image-gallery img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        #image-container {
+            display: none;
+            margin-top: 20px;
+        }
+        #image-container img {
+            width: 100%;
+            max-width: 500px;
+        }
     </style>
 </head>
 <body>
     <h1>사진 아카이브</h1>
     <a href="index.html">🏠 홈으로</a>
 
-    <p>여기에 친구들과 놀러간 사진과 일기를 올릴 거야!</p>
+    <div class="image-gallery">
+        <!-- 미리보기 이미지들 -->
+        <img src="images/성훈이피부.jpg" alt="성훈이피부" onclick="showImage('images/성훈이피부.jpg')">
+    </div>
+
+    <div id="image-container">
+        <img id="full-image" src="" alt="확대된 사진">
+    </div>
+
+    <script>
+        function showImage(imageSrc) {
+            document.getElementById('full-image').src = imageSrc;
+            document.getElementById('image-container').style.display = 'block';
+        }
+    </script>
 </body>
 </html>
